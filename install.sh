@@ -199,7 +199,7 @@ download_and_extract() {
 
   local tmp_dir
   tmp_dir="$(mktemp -d)"
-  trap 'rm -rf "$tmp_dir"' EXIT
+  trap 'rm -rf "${tmp_dir:-/dev/null}"' EXIT
 
   info "  Downloading..."
   curl -fsSL "$download_url" -o "$tmp_dir/$ASSET_NAME" || {
